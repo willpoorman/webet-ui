@@ -3,7 +3,7 @@
 The web frontend of WeBet, a friendly betting / match voting site. Built with React and Material UI
 
 *This is a personal project between me and some friends. But external contributions are welcome if
-you come across this come up with a useful addition*
+you come across this and come up with a useful addition*
 
 ## Getting Started
 
