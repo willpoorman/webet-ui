@@ -75,6 +75,13 @@ export function SideMenu() {
     >
       <List>
         <PageLink to="/">Home</PageLink>
+        <PageLink to="/events">Events</PageLink>
+        <PageLink to="/examples">Examples</PageLink>
+        <List component="div" disablePadding>
+          <PageLink to="/examples/data-grid" listItemClassName={classes.nested}>
+            DataGrid
+          </PageLink>
+        </List>
       </List>
     </Drawer>
   );
