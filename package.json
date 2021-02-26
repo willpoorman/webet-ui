@@ -1,5 +1,6 @@
 {
   "name": "webet-ui",
+  "description": "The web frontend of WeBet, a friendly betting / match voting site",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
