@@ -1,0 +1,5 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+export CI=1 # So that `npm test` will run in CI mode, i.e. non-interactive mode
+npm exec lint-staged
+npm test
