@@ -1,6 +1,7 @@
 import List from "@material-ui/core/List";
 import ListItem, { ListItemProps } from "@material-ui/core/ListItem";
 import ListItemText, { ListItemTextProps } from "@material-ui/core/ListItemText";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
 import Drawer from "@material-ui/core/Drawer";
 import React, { FunctionComponent } from "react";
 import { Link as RouterLink, LinkProps as RouterLinkProps } from "react-router-dom";
@@ -31,6 +32,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 interface PageLinkProps extends Pick<RouterLinkProps, "to">, Pick<ListItemProps, "selected"> {
+  icon?: JSX.Element | null;
   listItemClassName?: ListItemProps["className"];
   listItemTextClassName?: ListItemTextProps["className"];
 }
@@ -41,7 +43,12 @@ const PageLink: FunctionComponent<PageLinkProps> = ({
   listItemClassName,
   listItemTextClassName,
   selected,
+  icon,
 }) => {
+  if (icon === undefined) {
+    icon = null;
+  }
+
   return (
     <ListItem
       button
@@ -50,6 +57,7 @@ const PageLink: FunctionComponent<PageLinkProps> = ({
       className={listItemClassName}
       selected={selected}
     >
+      <ListItemIcon>{icon}</ListItemIcon>
       <ListItemText className={listItemTextClassName}>{children}</ListItemText>
     </ListItem>
   );
