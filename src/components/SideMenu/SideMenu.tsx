@@ -7,7 +7,12 @@ import HomeIcon from "@material-ui/icons/Home";
 import TableChartIcon from "@material-ui/icons/TableChart";
 import Drawer from "@material-ui/core/Drawer";
 import React, { Fragment, FunctionComponent } from "react";
-import { Link as RouterLink, LinkProps as RouterLinkProps } from "react-router-dom";
+import {
+  Link as RouterLink,
+  LinkProps as RouterLinkProps,
+  withRouter,
+  RouteComponentProps,
+} from "react-router-dom";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 
 const drawerWidth = 240;
@@ -148,8 +153,10 @@ const MenuItems: FunctionComponent<MenuItemsProps> = ({
   return <>{menuItemLinks}</>;
 };
 
-export function SideMenu() {
+const SideMenu: FunctionComponent<RouteComponentProps> = ({ location }) => {
   const classes = useStyles();
+  const currentPageLocation = location.pathname;
+
   // const [open, setOpen] = React.useState(false);
 
   // const handleDrawerOpen = () => {
@@ -173,12 +180,13 @@ export function SideMenu() {
       <List>
         <MenuItems
           menuItems={menuItems}
-          currentPageLocation={"/"}
+          currentPageLocation={currentPageLocation}
           nestedListClassName={classes.nested}
         />
       </List>
     </Drawer>
   );
-}
+};
+SideMenu.displayName = "SideMenu";
 
-export default SideMenu;
+export default withRouter(SideMenu);

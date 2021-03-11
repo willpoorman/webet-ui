@@ -4,8 +4,7 @@ import { Routes } from "./Router";
 import { BrowserRouter } from "react-router-dom";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import { SideMenu } from "./components/SideMenu/SideMenu";
-
+import SideMenu from "./components/SideMenu";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
