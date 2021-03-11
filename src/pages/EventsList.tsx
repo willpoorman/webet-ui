@@ -1,13 +1,13 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
-import { DataGrid, ColDef } from "@material-ui/data-grid";
+import { DataGrid, GridColDef } from "@material-ui/data-grid";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import IconButton from "@material-ui/core/IconButton";
 import { Tag, WeBetEvent } from "../models";
 
-const columns: ColDef[] = [
+const columns: GridColDef[] = [
   { field: "name", headerName: "Name", flex: 1 },
   { field: "start_time", headerName: "Start Time", flex: 0.75 },
   { field: "end_time", headerName: "End Time", flex: 0.75 },
