@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-interface PageLinkProps extends Pick<RouterLinkProps, "to">, Omit<ListItemTextProps, "classes"> {
+interface PageLinkProps extends Pick<RouterLinkProps, "to">, Pick<ListItemProps, "selected"> {
   listItemClassName?: ListItemProps["className"];
   listItemTextClassName?: ListItemTextProps["className"];
 }
@@ -40,13 +40,17 @@ const PageLink: FunctionComponent<PageLinkProps> = ({
   children,
   listItemClassName,
   listItemTextClassName,
-  ...listItemTextProps
+  selected,
 }) => {
   return (
-    <ListItem button to={to} component={RouterLink} className={listItemClassName}>
-      <ListItemText className={listItemTextClassName} {...listItemTextProps}>
-        {children}
-      </ListItemText>
+    <ListItem
+      button
+      to={to}
+      component={RouterLink}
+      className={listItemClassName}
+      selected={selected}
+    >
+      <ListItemText className={listItemTextClassName}>{children}</ListItemText>
     </ListItem>
   );
 };
