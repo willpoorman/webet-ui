@@ -2,8 +2,11 @@ import List from "@material-ui/core/List";
 import ListItem, { ListItemProps } from "@material-ui/core/ListItem";
 import ListItemText, { ListItemTextProps } from "@material-ui/core/ListItemText";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
+import EventIcon from "@material-ui/icons/Event";
+import HomeIcon from "@material-ui/icons/Home";
+import TableChartIcon from "@material-ui/icons/TableChart";
 import Drawer from "@material-ui/core/Drawer";
-import React, { FunctionComponent } from "react";
+import React, { Fragment, FunctionComponent } from "react";
 import { Link as RouterLink, LinkProps as RouterLinkProps } from "react-router-dom";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 
@@ -63,6 +66,88 @@ const PageLink: FunctionComponent<PageLinkProps> = ({
   );
 };
 
+interface MenuItem {
+  name: string;
+  path: string;
+  icon?: JSX.Element;
+  children?: MenuItem[];
+}
+
+const menuItems: MenuItem[] = [
+  {
+    name: "Home",
+    path: "/",
+    icon: <HomeIcon />,
+  },
+  {
+    name: "Events",
+    path: "/events",
+    icon: <EventIcon />,
+  },
+  {
+    name: "Examples",
+    path: "/examples",
+    children: [
+      {
+        name: "DataGrid",
+        path: "/examples/data-grid",
+        icon: <TableChartIcon />,
+      },
+    ],
+  },
+];
+
+interface MenuItemsProps {
+  menuItems: MenuItem[];
+  currentPageLocation: string;
+  nestedListClassName: string;
+}
+
+const MenuItems: FunctionComponent<MenuItemsProps> = ({
+  menuItems,
+  currentPageLocation,
+  nestedListClassName,
+}) => {
+  const menuItemLinks = menuItems.map((menuItem) => {
+    let nestedLinks: JSX.Element | null = null;
+    if (menuItem.children) {
+      const childLinks = menuItem.children.map((nestedMenuItem) => {
+        const selected = nestedMenuItem.path === currentPageLocation;
+
+        return (
+          <PageLink
+            to={nestedMenuItem.path}
+            listItemClassName={nestedListClassName}
+            key={nestedMenuItem.name}
+            icon={nestedMenuItem.icon}
+            selected={selected}
+          >
+            {nestedMenuItem.name}
+          </PageLink>
+        );
+      });
+
+      nestedLinks = (
+        <List component="div" disablePadding>
+          {childLinks}
+        </List>
+      );
+    }
+
+    const selected = menuItem.path === currentPageLocation;
+    return (
+      <Fragment key={menuItem.name}>
+        <PageLink key={menuItem.name} to={menuItem.path} icon={menuItem.icon} selected={selected}>
+          {menuItem.name}
+        </PageLink>
+        {nestedLinks}
+      </Fragment>
+    );
+  });
+
+  return <>{menuItemLinks}</>;
+};
+
 export function SideMenu() {
   const classes = useStyles();
   // const [open, setOpen] = React.useState(false);
@@ -86,14 +171,11 @@ export function SideMenu() {
       }}
     >
       <List>
-        <PageLink to="/">Home</PageLink>
-        <PageLink to="/events">Events</PageLink>
-        <PageLink to="/examples">Examples</PageLink>
-        <List component="div" disablePadding>
-          <PageLink to="/examples/data-grid" listItemClassName={classes.nested}>
-            DataGrid
-          </PageLink>
-        </List>
+        <MenuItems
+          menuItems={menuItems}
+          currentPageLocation={"/"}
+          nestedListClassName={classes.nested}
+        />
       </List>
     </Drawer>
   );
