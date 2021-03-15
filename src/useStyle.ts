@@ -35,5 +35,8 @@ export const useStyles = makeStyles((theme: Theme) =>
     nested: {
       paddingLeft: theme.spacing(4),
     },
+    eventCard: {
+      // minWidth: 275,
+    },
   })
 );
