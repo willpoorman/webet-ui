@@ -1,6 +1,5 @@
-export interface Tag {
-  name: string;
-}
+export type Tag = string;
+
 export interface WeBetEvent {
   name: string;
   start_time: string;
