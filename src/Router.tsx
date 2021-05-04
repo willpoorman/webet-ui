@@ -10,13 +10,13 @@ export function Routes() {
       <Route exact path="/">
         <Home />
       </Route>
-      <Route path="/events">
+      <Route exact path="/events">
         <EventList />
       </Route>
       <Route exact path="/examples">
         <Redirect to="/examples/data-grid" />
       </Route>
-      <Route path="/examples/data-grid">
+      <Route exact path="/examples/data-grid">
         <DataGridExample />
       </Route>
     </Switch>
