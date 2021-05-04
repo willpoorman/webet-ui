@@ -7,19 +7,25 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import { useStyles } from "../../useStyle";
 
-interface EventCardProps {
+interface MatchCardProps {
   name: string;
-  description: string;
-  startDate?: string;
+  description: string | JSX.Element;
   id: number;
+  eventId: number;
+  startDate?: string;
 }
 
-export const EventCard: FunctionComponent<EventCardProps> = ({ name, description, id }) => {
+export const MatchCard: FunctionComponent<MatchCardProps> = ({
+  name,
+  description,
+  id,
+  eventId,
+}) => {
   const classes = useStyles();
-  const eventDetailsUrl = `/event/${id}`;
+  const matchDetailsUrl = `/event/${eventId}/match/${id}`;
 
   return (
-    <Card className={classes.eventCard}>
+    <Card className={classes.matchCard}>
       <CardContent>
         <Typography variant="h5" component="h3">
           {name}
@@ -29,7 +35,7 @@ export const EventCard: FunctionComponent<EventCardProps> = ({ name, description
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" component={RouterLink} to={eventDetailsUrl}>
+        <Button size="small" component={RouterLink} to={matchDetailsUrl}>
           Details
         </Button>
       </CardActions>

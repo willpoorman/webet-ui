@@ -54,13 +54,15 @@ export interface EventUser {
 }
 
 export interface Match {
-  event: WeBetEvent;
+  id: number;
+  event: number; // Id of event
   name: string;
   start_time: string;
   status: string;
   bet_type: string;
   notes: string;
-  results: {};
+  results?: { [key: string]: any } | null;
+  tags: Tag[];
 }
 
 export interface MatchTeam {
