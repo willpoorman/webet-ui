@@ -61,6 +61,7 @@
     "trailingComma": "es5",
     "useTabs": false
   },
+  "proxy": "http://localhost:8000",
   "browserslist": {
     "production": [
       ">0.2%",
