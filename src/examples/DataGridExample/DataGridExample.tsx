@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect, useRef } from "react";
 
-import { DataGrid, GridColDef, ValueGetterParams, GridApi } from "@material-ui/data-grid";
+import { DataGrid, GridColDef, GridApi, useGridSlotComponentProps } from "@material-ui/data-grid";
 
 const columns: GridColDef[] = [
   { field: "id", headerName: "ID", width: 70 },
@@ -18,7 +18,7 @@ const columns: GridColDef[] = [
     description: "This column has a value getter and is not sortable.",
     sortable: false,
     width: 160,
-    valueGetter: (params: ValueGetterParams) =>
+    valueGetter: (params) =>
       `${params.getValue("firstName") || ""} ${params.getValue("lastName") || ""}`,
   },
 ];
@@ -41,7 +41,7 @@ export const DataGridExample: FunctionComponent = (props) => {
   // Example showing how we can use the apiRef to modify the DataGrid;
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      apiRef.current?.updateColumn({
+      apiRef?.current?.updateColumn({
         field: "firstName",
         headerName: "First Name",
       });
@@ -60,10 +60,12 @@ export const DataGridExample: FunctionComponent = (props) => {
           // Normally it's not good to provide an inline declared component as a prop, since it will
           // get redefined each render of TableExample, but since this "Toolbar" component is not
           // actually rendering anything and instead is returning null, it's fine
-          Toolbar: (params) => {
+          Toolbar: () => {
+            const gridSlotComponentProps = useGridSlotComponentProps();
+
             // Only set the ref once, if its already, set, we don't need to reset it
-            if (!apiRef.current && params.api.current) {
-              apiRef.current = params.api.current;
+            if (!apiRef?.current && gridSlotComponentProps?.apiRef) {
+              apiRef.current = gridSlotComponentProps.apiRef.current;
             }
             return null;
           },
