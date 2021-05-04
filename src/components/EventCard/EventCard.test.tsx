@@ -7,7 +7,7 @@ describe("EventCard", () => {
   it("renders the Event name and description", () => {
     render(
       <MemoryRouter>
-        <EventCard eventName="Fake Name" eventDescription="Fake Description" />
+        <EventCard name="Fake Name" description="Fake Description" id={1} />
       </MemoryRouter>
     );
 

@@ -7,23 +7,22 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 
 interface EventCardProps {
-  eventName: string;
-  eventDescription: string;
-  eventStartDate?: string;
-  eventId?: number;
+  name: string;
+  description: string;
+  startDate?: string;
+  id?: number;
 }
 
-export const EventCard: FunctionComponent<EventCardProps> = (props) => {
-  const { eventName, eventDescription } = props;
+export const EventCard: FunctionComponent<EventCardProps> = ({ name, description, id }) => {
   const classes = useStyles();
   return (
     <Card className={classes.eventCard}>
       <CardContent>
-        <Typography variant="h5" component="h2">
-          {eventName}
+        <Typography variant="h5" component="h3">
+          {name}
         </Typography>
         <Typography variant="body2" color="textSecondary" component="p">
-          {eventDescription}
+          {description}
         </Typography>
       </CardContent>
       <CardActions>

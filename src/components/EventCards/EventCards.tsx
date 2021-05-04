@@ -65,9 +65,9 @@ export const EventCards: FunctionComponent = () => {
     return (
       <Grid item xs={12} md={3} sm={6}>
         <EventCard
-          eventName={event.name}
-          eventDescription={event.tags.map((tag) => tag.name).join(",")}
-          eventStartDate={event.start_time}
+          name={event.name}
+          description={event.tags.join(", ")}
+          startDate={event.start_time}
           key={event.name}
         />
       </Grid>
