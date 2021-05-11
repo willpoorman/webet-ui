@@ -30,7 +30,7 @@ export const MatchCard: FunctionComponent<MatchCardProps> = ({
         <Typography variant="h5" component="h3">
           {name}
         </Typography>
-        <Typography variant="body2" color="textSecondary" component="p">
+        <Typography variant="body2" color="textSecondary" component="div">
           {description}
         </Typography>
       </CardContent>
