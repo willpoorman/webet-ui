@@ -1,7 +1,7 @@
-export interface Tag {
-  name: string;
-}
+export type Tag = string;
+
 export interface WeBetEvent {
+  id: number;
   name: string;
   start_time: string;
   end_time: string;
@@ -54,13 +54,15 @@ export interface EventUser {
 }
 
 export interface Match {
-  event: WeBetEvent;
+  id: number;
+  event: number; // Id of event
   name: string;
   start_time: string;
   status: string;
   bet_type: string;
   notes: string;
-  results: {};
+  results?: { [key: string]: any } | null;
+  tags: Tag[];
 }
 
 export interface MatchTeam {

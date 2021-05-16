@@ -2,21 +2,21 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
-import { EventCards } from "./EventCards";
+import { MatchCards } from "./MatchCards";
 import { MemoryRouter } from "react-router-dom";
-import { mockEvents } from "../../mockData/mockEvents";
+import { mockMatches } from "../../mockData/mockMatches";
 
 describe("EventCards", () => {
   it("renders the Event Heading in the EventCards", () => {
     const mockAxios = new MockAdapter(axios, { delayResponse: 500 });
-    mockAxios.onGet("/api/events/").reply(200, mockEvents);
+    mockAxios.onGet("/api/matches").reply(200, mockMatches);
 
     render(
       <MemoryRouter>
-        <EventCards />
+        <MatchCards eventId={1} />
       </MemoryRouter>
     );
-    const EventHeadingElement = screen.getByText(/Events/i);
-    expect(EventHeadingElement).toBeInTheDocument();
+    const MatchHeadingElement = screen.getByText(/Matches/i);
+    expect(MatchHeadingElement).toBeInTheDocument();
   });
 });
