@@ -4,8 +4,19 @@ import { EventList } from "./pages/EventsList";
 import { Home } from "./pages/Home";
 import { DataGridExample } from "./examples/DataGridExample/DataGridExample";
 import { EventDetails } from "./pages/EventDetails";
+import { Login } from "./pages/Login";
 
 export function Routes() {
+  return (
+    <Switch>
+      <Route exact path="/login">
+        <Login />
+      </Route>
+    </Switch>
+  );
+}
+
+export const AuthenticatedRoutes = () => {
   return (
     <Switch>
       <Route exact path="/">
@@ -25,4 +36,4 @@ export function Routes() {
       </Route>
     </Switch>
   );
-}
+};

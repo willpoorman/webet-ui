@@ -10,13 +10,14 @@ export const EventCards: FunctionComponent = () => {
   const [loading, setLoading] = useState(true);
   const [errorOccurred, setErrorOccurred] = useState(false);
   const [events, setEvents] = useState<WeBetEvent[] | []>([]);
+  console.log(events);
 
   useEffect(() => {
     setLoading(true);
     setErrorOccurred(false);
 
     axios
-      .get<WeBetEvent[]>("/api/events/")
+      .get<WeBetEvent[]>("/api/events")
       .then((response) => {
         setEvents(response.data);
       })

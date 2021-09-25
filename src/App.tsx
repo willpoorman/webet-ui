@@ -3,8 +3,9 @@ import "./App.css";
 import { Routes } from "./Router";
 import { BrowserRouter } from "react-router-dom";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import SideMenu from "./components/SideMenu";
 import { useStyles } from "./useStyle";
+import AuthenticatedApp from "./AuthenticatedApp";
+import AuthExample from "./examples/LoginExperiment/LoginExperiment1";
 
 function App() {
   const classes = useStyles();
@@ -12,10 +13,9 @@ function App() {
     <BrowserRouter>
       <CssBaseline />
       <div className={classes.root}>
-        <SideMenu />
-        <main className={classes.content}>
-          <Routes />
-        </main>
+        <Routes />
+        {/* <AuthenticatedApp /> */}
+        {/* <AuthExample /> */}
       </div>
     </BrowserRouter>
   );
