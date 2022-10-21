@@ -1,7 +1,7 @@
-import { Container, Grid } from "@material-ui/core";
-import React from "react";
-import { useStyles } from "../useStyle";
+import Container from "@mui/material/Container";
+import Grid from "@mui/material/Grid";
 import { EventCards } from "../components/EventCards";
+import { useStyles } from "../useStyle";
 
 export function Home() {
   const classes = useStyles();

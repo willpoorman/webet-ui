@@ -1,10 +1,10 @@
-import React, { FunctionComponent } from "react";
+import { FunctionComponent } from "react";
 import { Link as RouterLink } from "react-router-dom";
-import Button from "@material-ui/core/Button";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
+import Button from "@mui/material/Button";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
+import CardActions from "@mui/material/CardActions";
 import { useStyles } from "../../useStyle";
 
 interface MatchCardProps {

@@ -1,4 +1,4 @@
-import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
+import { makeStyles, createStyles, Theme } from "@mui/material/styles";
 
 const drawerWidth = 240;
 

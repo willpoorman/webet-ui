@@ -1,9 +1,9 @@
-import React, { FunctionComponent, useEffect, useState } from "react";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
+import IconButton from "@mui/material/IconButton";
+import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import axios from "axios";
-import { DataGrid, GridColDef } from "@material-ui/data-grid";
-import EditIcon from "@material-ui/icons/Edit";
-import DeleteIcon from "@material-ui/icons/Delete";
-import IconButton from "@material-ui/core/IconButton";
+import { FunctionComponent, useEffect, useState } from "react";
 import { Tag, WeBetEvent } from "../models";
 
 const columns: GridColDef[] = [

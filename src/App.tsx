@@ -1,13 +1,16 @@
-import React from "react";
-import "./App.css";
-import { Routes } from "./Router";
+import CssBaseline from "@mui/material/CssBaseline";
 import { BrowserRouter } from "react-router-dom";
-import CssBaseline from "@material-ui/core/CssBaseline";
+import "./App.css";
 import SideMenu from "./components/SideMenu";
+import { Routes } from "./Router";
 import { useStyles } from "./useStyle";
+import { ThemeProvider, createMuiTheme } from "@mui/material/styles";
 
-function App() {
+const theme = createMuiTheme();
+
+function Layout() {
   const classes = useStyles();
+
   return (
     <BrowserRouter>
       <CssBaseline />
@@ -18,6 +21,14 @@ function App() {
         </main>
       </div>
     </BrowserRouter>
+  );
+}
+
+function App() {
+  return (
+    <ThemeProvider theme={theme}>
+      <Layout />
+    </ThemeProvider>
   );
 }
 
