@@ -1,18 +1,20 @@
-import { CircularProgress, Container, Grid, Paper, Typography } from "@material-ui/core";
-import React, { FunctionComponent, useEffect, useState } from "react";
-import { useStyles } from "../useStyle";
-import { WeBetEvent } from "../models";
+import CircularProgress from "@mui/material/CircularProgress";
+import Container from "@mui/material/Container";
+import Grid from "@mui/material/Grid";
+import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
 import axios from "axios";
+import { FunctionComponent, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { MatchCards } from "../components/MatchCards";
+import { WeBetEvent } from "../models";
+import { classes } from "../styles";
 
 interface DetailsProps {
   event: WeBetEvent;
 }
 
 const Details: FunctionComponent<DetailsProps> = ({ event }) => {
-  const classes = useStyles();
-
   return (
     <Paper className={classes.paper}>
       <Typography variant="h1" component="h1" gutterBottom>
@@ -31,7 +33,6 @@ const Details: FunctionComponent<DetailsProps> = ({ event }) => {
 };
 
 export const EventDetails: FunctionComponent = () => {
-  const classes = useStyles();
   const { id } = useParams<Record<"id", string>>();
   const [loading, setLoading] = useState(true);
   const [event, setEvent] = useState<WeBetEvent>();

@@ -1,6 +1,5 @@
-import React, { FunctionComponent, useEffect, useRef } from "react";
-
-import { DataGrid, GridColDef, GridApi, useGridSlotComponentProps } from "@material-ui/data-grid";
+import { DataGrid, GridApi, GridColDef, useGridApiContext } from "@mui/x-data-grid";
+import { FunctionComponent, useEffect, useRef } from "react";
 
 const columns: GridColDef[] = [
   { field: "id", headerName: "ID", width: 70 },
@@ -18,8 +17,7 @@ const columns: GridColDef[] = [
     description: "This column has a value getter and is not sortable.",
     sortable: false,
     width: 160,
-    valueGetter: (params) =>
-      `${params.getValue("firstName") || ""} ${params.getValue("lastName") || ""}`,
+    valueGetter: (params) => `${params.row.firstName || ""} ${params.row.lastName || ""}`,
   },
 ];
 
@@ -61,11 +59,11 @@ export const DataGridExample: FunctionComponent = (props) => {
           // get redefined each render of TableExample, but since this "Toolbar" component is not
           // actually rendering anything and instead is returning null, it's fine
           Toolbar: () => {
-            const gridSlotComponentProps = useGridSlotComponentProps();
+            const gridApiRef = useGridApiContext();
 
             // Only set the ref once, if its already, set, we don't need to reset it
-            if (!apiRef?.current && gridSlotComponentProps?.apiRef) {
-              apiRef.current = gridSlotComponentProps.apiRef.current;
+            if (!apiRef?.current && gridApiRef) {
+              apiRef.current = gridApiRef.current;
             }
             return null;
           },

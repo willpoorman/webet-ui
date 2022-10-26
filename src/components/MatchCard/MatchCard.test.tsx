@@ -1,4 +1,3 @@
-import React from "react";
 import { render, screen } from "@testing-library/react";
 import { MatchCard } from "./MatchCard";
 import { MemoryRouter } from "react-router-dom";

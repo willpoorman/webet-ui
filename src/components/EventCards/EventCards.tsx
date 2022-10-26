@@ -1,12 +1,14 @@
-import { CircularProgress, Grid, Paper, Typography } from "@material-ui/core";
+import CircularProgress from "@mui/material/CircularProgress";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
+import Paper from "@mui/material/Paper";
 import axios from "axios";
-import React, { FunctionComponent, useEffect, useState } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import { WeBetEvent } from "../../models";
-import { useStyles } from "../../useStyle";
+import { classes } from "../../styles";
 import { EventCard } from "../EventCard";
 
 export const EventCards: FunctionComponent = () => {
-  const classes = useStyles();
   const [loading, setLoading] = useState(true);
   const [errorOccurred, setErrorOccurred] = useState(false);
   const [events, setEvents] = useState<WeBetEvent[] | []>([]);

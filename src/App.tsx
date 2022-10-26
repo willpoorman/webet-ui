@@ -1,23 +1,21 @@
-import React from "react";
-import "./App.css";
-import { Routes } from "./Router";
 import { BrowserRouter } from "react-router-dom";
-import CssBaseline from "@material-ui/core/CssBaseline";
+import "./App.css";
 import SideMenu from "./components/SideMenu";
-import { useStyles } from "./useStyle";
+import { Routes } from "./Router";
+import { Root, classes } from "./styles";
 
 function App() {
-  const classes = useStyles();
   return (
-    <BrowserRouter>
-      <CssBaseline />
-      <div className={classes.root}>
-        <SideMenu />
-        <main className={classes.content}>
-          <Routes />
-        </main>
-      </div>
-    </BrowserRouter>
+    <Root>
+      <BrowserRouter>
+        <div className={classes.root}>
+          <SideMenu />
+          <main className={classes.content}>
+            <Routes />
+          </main>
+        </div>
+      </BrowserRouter>
+    </Root>
   );
 }
 

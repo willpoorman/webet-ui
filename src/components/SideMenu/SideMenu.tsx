@@ -1,21 +1,24 @@
-import List from "@material-ui/core/List";
-import ListItem, { ListItemProps } from "@material-ui/core/ListItem";
-import ListItemText, { ListItemTextProps } from "@material-ui/core/ListItemText";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import EventIcon from "@material-ui/icons/Event";
-import HomeIcon from "@material-ui/icons/Home";
-import TableChartIcon from "@material-ui/icons/TableChart";
-import Drawer from "@material-ui/core/Drawer";
-import React, { Fragment, FunctionComponent } from "react";
+import EventIcon from "@mui/icons-material/Event";
+import HomeIcon from "@mui/icons-material/Home";
+import TableChartIcon from "@mui/icons-material/TableChart";
+import Drawer from "@mui/material/Drawer";
+import List from "@mui/material/List";
+import ListItem, { ListItemProps } from "@mui/material/ListItem";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText, { ListItemTextProps } from "@mui/material/ListItemText";
+import { Fragment, FunctionComponent, PropsWithChildren } from "react";
 import {
   Link as RouterLink,
   LinkProps as RouterLinkProps,
-  withRouter,
   RouteComponentProps,
+  withRouter,
 } from "react-router-dom";
-import { useStyles } from "../../useStyle";
+import { classes } from "../../styles";
 
-interface PageLinkProps extends Pick<RouterLinkProps, "to">, Pick<ListItemProps, "selected"> {
+interface PageLinkProps
+  extends Pick<RouterLinkProps, "to">,
+    Pick<ListItemProps, "selected">,
+    PropsWithChildren {
   icon?: JSX.Element | null;
   listItemClassName?: ListItemProps["className"];
   listItemTextClassName?: ListItemTextProps["className"];
@@ -130,7 +133,6 @@ const MenuItems: FunctionComponent<MenuItemsProps> = ({
 };
 
 const SideMenu: FunctionComponent<RouteComponentProps> = ({ location }) => {
-  const classes = useStyles();
   const currentPageLocation = location.pathname;
 
   // const [open, setOpen] = React.useState(false);
