@@ -29,10 +29,10 @@ const columns: GridColDef[] = [
     renderCell: () => {
       return (
         <span>
-          <IconButton edge={"start"}>
+          <IconButton edge={"start"} size="large">
             <EditIcon />
           </IconButton>
-          <IconButton edge={"start"}>
+          <IconButton edge={"start"} size="large">
             <DeleteIcon />
           </IconButton>
         </span>

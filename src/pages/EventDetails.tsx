@@ -8,15 +8,13 @@ import { FunctionComponent, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { MatchCards } from "../components/MatchCards";
 import { WeBetEvent } from "../models";
-import { useStyles } from "../useStyle";
+import { classes } from "../styles";
 
 interface DetailsProps {
   event: WeBetEvent;
 }
 
 const Details: FunctionComponent<DetailsProps> = ({ event }) => {
-  const classes = useStyles();
-
   return (
     <Paper className={classes.paper}>
       <Typography variant="h1" component="h1" gutterBottom>
@@ -35,7 +33,6 @@ const Details: FunctionComponent<DetailsProps> = ({ event }) => {
 };
 
 export const EventDetails: FunctionComponent = () => {
-  const classes = useStyles();
   const { id } = useParams<Record<"id", string>>();
   const [loading, setLoading] = useState(true);
   const [event, setEvent] = useState<WeBetEvent>();

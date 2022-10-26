@@ -3,10 +3,9 @@ import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import clsx from "clsx";
-import { useStyles } from "../useStyle";
+import { classes } from "../styles";
 
 export function SampleLayout() {
-  const classes = useStyles();
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   return (
     <Container maxWidth="lg" className={classes.container}>

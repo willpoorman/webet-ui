@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import axios from "axios";
 import { Match } from "../../models";
-import { useStyles } from "../../useStyle";
+import { classes } from "../../styles";
 import { MatchCard } from "../MatchCard";
 
 export interface MatchCardsProps {
@@ -13,7 +13,6 @@ export interface MatchCardsProps {
 }
 
 export const MatchCards: FunctionComponent<MatchCardsProps> = ({ eventId }) => {
-  const classes = useStyles();
   const [loading, setLoading] = useState(true);
   const [errorOccurred, setErrorOccurred] = useState(false);
   const [matches, setMatches] = useState<Match[] | []>([]);

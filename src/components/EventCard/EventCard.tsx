@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 import CardActions from "@mui/material/CardActions";
 import { FunctionComponent } from "react";
 import { Link as RouterLink } from "react-router-dom";
-import { useStyles } from "../../useStyle";
+import { classes } from "../../styles";
 
 interface EventCardProps {
   name: string;
@@ -15,7 +15,6 @@ interface EventCardProps {
 }
 
 export const EventCard: FunctionComponent<EventCardProps> = ({ name, description, id }) => {
-  const classes = useStyles();
   const eventDetailsUrl = `/event/${id}`;
 
   return (

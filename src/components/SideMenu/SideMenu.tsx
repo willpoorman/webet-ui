@@ -13,7 +13,7 @@ import {
   RouteComponentProps,
   withRouter,
 } from "react-router-dom";
-import { useStyles } from "../../useStyle";
+import { classes } from "../../styles";
 
 interface PageLinkProps
   extends Pick<RouterLinkProps, "to">,
@@ -133,7 +133,6 @@ const MenuItems: FunctionComponent<MenuItemsProps> = ({
 };
 
 const SideMenu: FunctionComponent<RouteComponentProps> = ({ location }) => {
-  const classes = useStyles();
   const currentPageLocation = location.pathname;
 
   // const [open, setOpen] = React.useState(false);
