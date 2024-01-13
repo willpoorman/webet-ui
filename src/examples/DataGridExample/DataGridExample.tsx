@@ -39,10 +39,12 @@ export const DataGridExample: FunctionComponent = (props) => {
   // Example showing how we can use the apiRef to modify the DataGrid;
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      apiRef?.current?.updateColumn({
-        field: "firstName",
-        headerName: "First Name",
-      });
+      apiRef?.current?.updateColumns([
+        {
+          field: "firstName",
+          headerName: "First Name",
+        },
+      ]);
     }, 1500);
 
     return () => {

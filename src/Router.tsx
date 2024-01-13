@@ -3,6 +3,7 @@ import { EventList } from "./pages/EventsList";
 import { Home } from "./pages/Home";
 import { DataGridExample } from "./examples/DataGridExample/DataGridExample";
 import { EventDetails } from "./pages/EventDetails";
+import { MatchDetails } from "./pages/MatchDetails";
 
 export function Routes() {
   return (
@@ -15,6 +16,9 @@ export function Routes() {
       </Route>
       <Route exact path="/event/:id">
         <EventDetails />
+      </Route>
+      <Route exact path="/event/:eventId/match/:matchId">
+        <MatchDetails />
       </Route>
       <Route exact path="/examples">
         <Redirect to="/examples/data-grid" />

@@ -1,11 +1,31 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import CssBaseline from "@mui/material/CssBaseline";
-import { ThemeProvider } from "@mui/material/styles";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { orange } from "@mui/material/colors";
 import "./index.css";
 import App from "./App";
-import theme from "./theme";
 import reportWebVitals from "./reportWebVitals";
+
+const theme = createTheme({
+  status: {
+    danger: orange[500],
+  },
+});
+
+declare module "@mui/material/styles" {
+  interface Theme {
+    status: {
+      danger: string;
+    };
+  }
+  // allow configuration using `createTheme`
+  interface ThemeOptions {
+    status?: {
+      danger?: string;
+    };
+  }
+}
 
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement!);
